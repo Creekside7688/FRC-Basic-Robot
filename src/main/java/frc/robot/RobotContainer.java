@@ -5,9 +5,12 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.commands.TrajectoryFollower;
+import frc.robot.subsystems.Drivetrain;
 
 public class RobotContainer {
+    private final Drivetrain drivetrain = new Drivetrain();
+
     public RobotContainer() {
         configureBindings();
     }
@@ -16,6 +19,6 @@ public class RobotContainer {
     }
 
     public Command getAutonomousCommand() {
-        return Commands.print("No autonomous command configured");
+        return new TrajectoryFollower(drivetrain, "sample.wpilib.json");
     }
 }
